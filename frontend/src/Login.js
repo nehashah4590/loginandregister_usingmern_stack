@@ -1,10 +1,9 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName:'',
     email: '',
     password: ''
   });
@@ -17,9 +16,17 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
+    try {
+      const response = await axios.post('http://localhost:8000/api/authenticate_users', formData);
+      console.log(response.data);
+    
+    } catch (error) {
+      console.error('Error:', error);
+    
+    }
   };
 
   return (

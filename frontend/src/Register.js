@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -17,9 +18,18 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
+   
+    try {
+      const response = await axios.post('http://localhost:8000/api/create_users', formData);
+      console.log(response.data);
+    
+    } catch (error) {
+      console.error('Error:', error);
+    
+    }
   };
 
   return (
@@ -32,24 +42,24 @@ function Register() {
         <p className='my-10 font-bold text-[18px]'>Have an account? <Link to="../login" className='text-blue-500'>Log in now</Link></p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">First Name</label>
+            <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">First Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="firstname"
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
               required
             />
           </div>
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Last Name</label>
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
               required
