@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -23,12 +24,12 @@ function Register() {
 
   return (
     <div className='flex bg-white'>
-      <div className='w-[25vw]'>
+      <div className='w-[25vw] hidden md:block'>
         <img src={`${process.env.PUBLIC_URL}/Images/signup.png`} alt='signup' className='h-[100vh]'/>
       </div>
-      <div className="p-8 max-w-md w-[75vw]">
-        <h2 className="text-2xl font-bold mb-6 text-center">Create your account</h2>
-        <p>Have an account? Log in now</p>
+      <div className="p-8 max-w-md">
+        <h2 className="text-4xl font-bold mt-[8vh] text-center text-green-600">Create your account</h2>
+        <p className='my-10 font-bold text-[18px]'>Have an account? <Link to="../login" className='text-blue-500'>Log in now</Link></p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">First Name</label>
@@ -78,7 +79,7 @@ function Register() {
               required
             />
           </div>
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">
+          <button type="submit" className="w-full bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
             Register
           </button>
         </form>
