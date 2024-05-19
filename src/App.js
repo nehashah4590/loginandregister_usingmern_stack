@@ -1,9 +1,27 @@
+import Home from "./Home";
+import Login from "./Login";
+import Register from "./Register";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path:"/",
+      element: <Home/>
+    },
+    {
+      path:"/login",
+      element: <Login/>
+    },
+    {
+      path:"/register",
+      element: <Register/>
+    },
+  ])
   return (
-    <div className=" text-3xl bg-slate-200 ">
-      <h1>Hello world!</h1>
-      <h1>Hello world!</h1>
+    <div>
+      <RouterProvider router={router}/>
     </div>
   );
 }
