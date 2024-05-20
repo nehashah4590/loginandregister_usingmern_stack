@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import loginImage from "./assets/images/signin.png";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -66,7 +67,7 @@ const Login = () => {
         </form>
       </div>
       <div className='w-calc-custom hidden md:block'>
-        <img src={`${process.env.PUBLIC_URL}/Images/signin.png`} alt='signup' className='h-[100vh]'/>
+        <img src={loginImage} alt='signup' className='h-[100vh]'/>
       </div>
     </div>
   );

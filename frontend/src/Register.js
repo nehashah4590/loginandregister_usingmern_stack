@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import signupimage from "./assets/images/signup.png";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ function Register() {
       ...formData,
       [name]: value
     });
+    
   };
 
   const handleSubmit = async(e) => {
@@ -35,7 +37,7 @@ function Register() {
   return (
     <div className='flex bg-white'>
       <div className='w-[25vw] hidden md:block'>
-        <img src={`${process.env.PUBLIC_URL}/Images/signup.png`} alt='signup' className='h-[100vh]'/>
+        <img src={signupimage} alt='signup_background_image' className='h-[100vh]'/>
       </div>
       <div className="p-8 max-w-md">
         <h2 className="text-4xl font-bold mt-[8vh] text-center text-green-600">Create your account</h2>
